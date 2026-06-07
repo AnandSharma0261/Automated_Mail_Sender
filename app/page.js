@@ -73,6 +73,7 @@ export default function Home() {
   const [persistent, setPersistent] = useState(null);
   const [jobFilter, setJobFilter] = useState('all');
   const [now, setNow] = useState(0);
+  const [theme, setTheme] = useState('dark');
 
   const toastId = useRef(0);
   const fileRef = useRef(null);
@@ -165,6 +166,22 @@ export default function Home() {
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, []);
+
+  // ── Theme ───────────────────────────────────────────────────────────────
+  useEffect(() => {
+    setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+  }, []);
+
+  function toggleTheme() {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem('mailTheme', next);
+    } catch {
+      /* ignore */
+    }
+  }
 
   // ── Attachment ──────────────────────────────────────────────────────────────
   function readFile(file) {
@@ -319,6 +336,15 @@ export default function Home() {
         <div>
           <h1>Automated Mail Sender</h1>
         </div>
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          type="button"
+          title={theme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+          aria-label="Toggle theme"
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
       </div>
       <p className="subtitle">
         Send bulk emails instantly, or schedule them for the perfect moment.

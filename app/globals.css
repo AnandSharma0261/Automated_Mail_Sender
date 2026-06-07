@@ -23,6 +23,26 @@
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Light theme — warm cream version of Sunset (same orange→pink accent) */
+[data-theme='light'] {
+  --bg: #fdf6f0;
+  --bg-soft: #fbeee6;
+  --card: #ffffff;
+  --border: #f0d9cf;
+  --line: #f3e4db;
+  --input: #fbf3ee;
+  --inset: #f6ece4;
+  --text: #2b1d28;
+  --muted: #8a6f7e;
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --warn: #b45309;
+  --warn-bg: #fef3c7;
+  --shadow: 0 10px 30px rgba(120, 60, 90, 0.12);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -143,6 +163,37 @@ textarea:focus {
 
 input[type='datetime-local'] {
   color-scheme: dark;
+}
+
+/* ── Light theme element overrides ────────────────────────────────────── */
+[data-theme='light'] body {
+  background: radial-gradient(1100px 560px at 82% -10%, #ffe3d6 0%, transparent 60%),
+    radial-gradient(900px 520px at -10% 5%, #ffdcea 0%, transparent 55%), var(--bg);
+}
+[data-theme='light'] input[type='datetime-local'] {
+  color-scheme: light;
+}
+[data-theme='light'] .status-pill.scheduled {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+/* ── Theme toggle ─────────────────────────────────────────────────────── */
+.theme-toggle {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--input);
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.theme-toggle:hover {
+  border-color: var(--primary-hi);
+  transform: translateY(-1px);
 }
 
 .row {
