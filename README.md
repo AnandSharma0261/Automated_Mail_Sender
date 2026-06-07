@@ -68,13 +68,14 @@ Without the Upstash vars, the app runs fine locally on the in-memory store.
 
 ### Triggering the cron
 
-`vercel.json` already declares a cron on `/api/cron` every minute. Vercel
-automatically calls it with the `Authorization: Bearer <CRON_SECRET>` header.
+`vercel.json` declares a **daily** cron on `/api/cron` (`0 0 * * *`), which is
+the most frequent schedule the **Hobby (free) plan allows**. Vercel calls it
+automatically with the `Authorization: Bearer <CRON_SECRET>` header. This acts
+as a once-a-day safety net.
 
-> ⚠️ **Vercel Hobby (free) plan runs cron jobs only once per day.** For
-> minute-level scheduling on the free plan, use an external cron instead (next
-> section). On the **Pro** plan, the built-in `vercel.json` cron runs every
-> minute as-is.
+> ⚠️ For **minute-level** scheduling you need either an external cron (next
+> section, works on any plan) or the **Pro** plan — on Pro you can change the
+> schedule in `vercel.json` to `* * * * *` (every minute).
 
 ### Free alternative: external cron (any plan)
 
