@@ -1,18 +1,23 @@
 {
-  "name": "nodemail",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "automated-mail-sender",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Bulk email sender with scheduling — Next.js + Nodemailer, deployable on Vercel",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "body-parser": "^2.2.0",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "nodemailer": "^7.0.3"
+    "@upstash/redis": "^1.34.3",
+    "next": "14.2.35",
+    "nodemailer": "^8.0.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.35"
   }
 }
