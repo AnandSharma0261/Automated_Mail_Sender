@@ -7,7 +7,8 @@ export const runtime = 'nodejs';
 // Create a scheduled job
 export async function POST(req) {
   try {
-    const { emails, subject, message, attachment, sendAt } = await req.json();
+    const { emails, subject, message, attachment, sendAt, fromName, cc, bcc } =
+      await req.json();
 
     const list = Array.isArray(emails)
       ? emails.map((e) => e.trim()).filter(Boolean)
@@ -45,6 +46,9 @@ export async function POST(req) {
       subject,
       message,
       emails: list,
+      fromName: fromName || null,
+      cc: cc || null,
+      bcc: bcc || null,
       attachment: attachment || null,
       sendAt: ts,
       status: 'scheduled',
@@ -98,7 +102,8 @@ export async function DELETE(req) {
 // Edit an existing scheduled job
 export async function PATCH(req) {
   try {
-    const { id, emails, subject, message, attachment, sendAt } = await req.json();
+    const { id, emails, subject, message, attachment, sendAt, fromName, cc, bcc } =
+      await req.json();
 
     if (!id) {
       return NextResponse.json({ success: false, message: 'Missing job id.' }, { status: 400 });
@@ -144,6 +149,9 @@ export async function PATCH(req) {
       subject,
       message,
       emails: list,
+      fromName: fromName || null,
+      cc: cc || null,
+      bcc: bcc || null,
       sendAt: ts,
       total: list.length,
       // Re-arm the job: reset status/counters so it sends again at the new time.

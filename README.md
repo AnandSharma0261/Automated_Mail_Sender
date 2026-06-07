@@ -4,9 +4,14 @@ Bulk email sender with **scheduling**, rebuilt on **Next.js + Nodemailer** and r
 
 - ✅ Send bulk emails instantly (batched to respect Gmail rate limits)
 - ⏰ Schedule emails for a future date/time — survives restarts (Upstash Redis)
-- 📎 Optional file attachments
-- 📊 Live dashboard of scheduled / sent / failed jobs
-- 🎨 Clean, modern dark UI
+- ✏️ Edit or cancel a scheduled email (time, recipients, content)
+- 👥 Recipient chips with live validation + automatic de-duplication
+- 👁️ Live email preview before sending
+- 🏷️ Optional sender name, CC and BCC
+- 📎 Drag-and-drop file attachments
+- 💾 Draft auto-save (survives an accidental refresh)
+- 📊 Live dashboard with countdowns, progress bars and status filters
+- 🎨 Clean, modern dark UI with toast notifications
 
 > Migrated from the original Express + static HTML version. The old `index.js`
 > server is replaced by Next.js App Router API routes.

@@ -6,7 +6,7 @@ export const maxDuration = 60;
 
 export async function POST(req) {
   try {
-    const { emails, subject, message, attachment } = await req.json();
+    const { emails, subject, message, attachment, fromName, cc, bcc } = await req.json();
 
     if (!Array.isArray(emails) || emails.length === 0) {
       return NextResponse.json(
@@ -21,7 +21,7 @@ export async function POST(req) {
       );
     }
 
-    const result = await sendBulk({ emails, subject, message, attachment });
+    const result = await sendBulk({ emails, subject, message, attachment, fromName, cc, bcc });
 
     return NextResponse.json({
       success: true,

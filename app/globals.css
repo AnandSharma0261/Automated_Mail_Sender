@@ -378,3 +378,243 @@ input[type='datetime-local'] {
     transform: rotate(360deg);
   }
 }
+
+/* ── Recipient chips + counts ─────────────────────────────────────────── */
+.count-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.count-line .ok {
+  color: var(--success);
+}
+.count-line .bad {
+  color: var(--error);
+}
+.count-line .muted-pill {
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 132px;
+  overflow-y: auto;
+  padding: 2px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0e1530;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 6px 4px 11px;
+  font-size: 12px;
+  color: var(--text);
+  max-width: 100%;
+}
+.chip.invalid {
+  border-color: #ef444488;
+  color: var(--error);
+  background: var(--error-bg);
+}
+.chip button,
+.chip-x {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 11px;
+  opacity: 0.6;
+  padding: 0 2px;
+}
+.chip button:hover,
+.chip-x:hover {
+  opacity: 1;
+}
+
+/* ── Advanced (from-name, cc, bcc) ────────────────────────────────────── */
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--primary-hi);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 0 0;
+}
+.advanced {
+  margin-top: 4px;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Dropzone ─────────────────────────────────────────────────────────── */
+.dropzone {
+  border: 1.5px dashed var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 13px;
+}
+.dropzone:hover,
+.dropzone.active {
+  border-color: var(--primary-hi);
+  background: rgba(99, 102, 241, 0.08);
+}
+.file-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+/* ── Right column ─────────────────────────────────────────────────────── */
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ── Preview ──────────────────────────────────────────────────────────── */
+.preview {
+  background: #0e1530;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 14px;
+}
+.preview-row {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  padding: 3px 0;
+  border-bottom: 1px solid #1c2740;
+}
+.preview-row .pk {
+  color: var(--muted);
+  width: 56px;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.preview-row .psubj {
+  font-weight: 600;
+}
+.preview-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 13px;
+  color: var(--text);
+  margin-top: 12px;
+  min-height: 60px;
+  line-height: 1.55;
+}
+.preview-attach {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+  background: #0b1228;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: inline-block;
+}
+
+/* ── Job filters + progress ───────────────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.filter {
+  background: #0e1530;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.countdown {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.progress {
+  display: flex;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #0b1228;
+  margin-top: 10px;
+}
+.progress .bar.ok {
+  background: var(--success);
+}
+.progress .bar.bad {
+  background: var(--error);
+}
+.cancel.full {
+  width: 100%;
+  margin-top: 8px;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* ── Toasts ───────────────────────────────────────────────────────────── */
+.toasts {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 340px;
+}
+.toast {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+  box-shadow: var(--shadow);
+  animation: slidein 0.25s ease;
+  border: 1px solid transparent;
+}
+.toast.success {
+  background: #065f46;
+  border-color: #10b981;
+}
+.toast.error {
+  background: #7f1d1d;
+  border-color: #ef4444;
+}
+.toast.info {
+  background: #1e3a8a;
+  border-color: #3b82f6;
+}
+@keyframes slidein {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+}
