@@ -313,6 +313,12 @@ input[type='datetime-local'] {
   color: var(--error);
 }
 
+.job-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
 .cancel {
   background: transparent;
   border: 1px solid var(--border);
@@ -323,6 +329,10 @@ input[type='datetime-local'] {
   cursor: pointer;
   margin-top: 10px;
   transition: all 0.15s;
+}
+
+.job-actions .cancel {
+  margin-top: 0;
 }
 
 .cancel:hover {
